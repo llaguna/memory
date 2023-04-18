@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Components/Card';	
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
-	const [name, setName] = useState(); 
+	const [name, setName] = useState('');
 	const [gameState, setGameState] = useState(false);
 
 	const [cards, setCards] = useState([]);
@@ -89,15 +90,28 @@ function App() {
 	};
 
 	const start = () => {
-		setGameState(true);		
+        if(name != ''){
+            setGameState(true);
+        }else{
+            alert('Please add a name')
+        }
 	}
 
 	if (!gameState) {
 		return (
-			<div className="login-form_stargame">
-				<input type='text' placeholder='Type your name' onChange={(e) => setName(e.target.value)} />
-				<button onClick={ start }>Start game</button>
-			</div>
+            <section className="h-100 d-flex align-items-center">
+                <div className="container align-center-element">
+                    <div className="row d-flex justify-content-center">
+                        <div className="col-md-5 ">
+                            <form className="login-form_stargame">
+                                <input type='text' id="name" autoFocus className="login-form_inputname" placeholder='Type your name' onChange={ (e) => setName(e.target.value) } />
+                                <button type="submit" className="login-form_buttonlogin" onClick={ start }>Start game</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
 		)
 	}
 
