@@ -46,8 +46,6 @@ function App() {
 
 
 
-
-
 	useEffect(() => {
     	checkForMatch();
   	}, [secondCard]);  // Este useEffect se va a ejecutar cada vez que secondCard sea modificado
